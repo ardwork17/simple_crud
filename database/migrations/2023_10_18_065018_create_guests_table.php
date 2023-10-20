@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('no_ktp');
             $table->string('telepon');
             $table->string('email');
             $table->text('alamat');

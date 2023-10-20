@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">EDIT GUEST</h5>
+                <h5 class="modal-title" id="exampleModalLabel">EDIT</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,6 +14,11 @@
                     <label for="name" class="control-label">Nama</label>
                     <input type="text" class="form-control" id="nama-edit">
                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nama"></div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="control-label">No KTP</label>
+                    <input type="text" class="form-control" id="ktp-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-ktp"></div>
                 </div>
                 <div class="form-group">
                     <label for="name" class="control-label">Telepon</label>
@@ -56,6 +61,7 @@
                 //fill data to form
                 $('#guest_id').val(response.data.id);
                 $('#nama-edit').val(response.data.nama);
+                $('#ktp-edit').val(response.data.no_ktp);
                 $('#telepon-edit').val(response.data.telepon);
                 $('#email-edit').val(response.data.email);
                 $('#alamat-edit').val(response.data.alamat);
@@ -74,6 +80,7 @@
         //define 
         let guest_id = $('#guest_id').val();
         let nama   = $('#nama-edit').val();
+        let no_ktp   = $('#ktp-edit').val();
         let telepon = $('#telepon-edit').val();
         let email = $('#email-edit').val();
         let alamat = $('#alamat-edit').val();
@@ -87,6 +94,7 @@
             cache: false,
             data: {
                 "nama": nama,
+                "no_ktp": no_ktp,
                 "telepon": telepon,
                 "email": email,
                 "alamat": alamat,
@@ -107,6 +115,7 @@
                 let post = `
                     <tr id="index_${response.data.id}">
                         <td>${response.data.nama}</td>
+                        <td>${response.data.no_ktp}</td>
                         <td>${response.data.telepon}</td>
                         <td>${response.data.email}</td>
                         <td>${response.data.alamat}</td>
@@ -135,6 +144,15 @@
 
                     //add message to alert
                     $('#alert-nama').html(error.responseJSON.nama[0]);
+                } 
+                if(error.responseJSON.nama[0]) {
+
+                    //show alert
+                    $('#alert-ktp').removeClass('d-none');
+                    $('#alert-ktp').addClass('d-block');
+
+                    //add message to alert
+                    $('#alert-ktp').html(error.responseJSON.no_ktp[0]);
                 } 
 
                 if(error.responseJSON.telepon[0]) {

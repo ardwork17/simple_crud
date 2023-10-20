@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laravel Ajax CRUD - SantriKoding.com</title>
+    <title>tes</title>
     <style>
         body {
             background-color: lightgray !important;
@@ -21,7 +21,7 @@
     <div class="container" style="margin-top: 50px">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center">LARAVEL CRUD AJAX - <a href="https://santrikoding.com">WWW.SANTRIKODING.COM</a></h4>
+                <h4 class="text-center">CRUD SEDERHANA</h4>
                 <div class="card border-0 shadow-sm rounded-md mt-4">
                     <div class="card-body">
 
@@ -31,6 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
+                                    <th>No Ktp</th>
                                     <th>Telepon</th>
                                     <th>Email</th>
                                     <th>Alamat</th>
@@ -41,6 +42,7 @@
                                 @foreach($guest as $guests)
                                 <tr id="index_{{ $guests->id }}">
                                     <td>{{ $guests->nama }}</td>
+                                    <td>{{ $guests->no_ktp }}</td>
                                     <td>{{ $guests->telepon }}</td>
                                     <td>{{ $guests->email }}</td>
                                     <td>{{ $guests->alamat }}</td>

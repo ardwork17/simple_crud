@@ -22,6 +22,7 @@ class GuestController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama'              => 'required',
+            'no_ktp'              => 'required',
             'telepon'           => 'required',
             'email'             => 'required',
             'alamat'            => 'required',
@@ -33,6 +34,7 @@ class GuestController extends Controller
 
         $guest = Guest::create([
         'nama'           => $request->nama,
+        'no_ktp'           => $request->no_ktp,
         'telepon'        => $request->telepon,
         'email'          => $request->email,
         'alamat'         => $request->alamat,

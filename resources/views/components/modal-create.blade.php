@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">TAMBAH GUEST</h5>
+                <h5 class="modal-title" id="exampleModalLabel">TAMBAH</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,6 +14,11 @@
                     <label for="name" class="control-label">Nama</label>
                     <input type="text" class="form-control" id="nama">
                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nama"></div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="control-label">No KTP</label>
+                    <input type="number" class="form-control" id="no_ktp">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-ktp"></div>
                 </div>
                 <div class="form-group">
                     <label for="name" class="control-label">Telepon</label>
@@ -56,6 +61,7 @@
 
         //define variable
         let nama   = $('#nama').val();
+        let no_ktp   = $('#no_ktp').val();
         let telepon = $('#telepon').val();
         let email = $('#email').val();
         let alamat = $('#alamat').val();
@@ -69,6 +75,7 @@
             cache: false,
             data: {
                 "nama": nama,
+                "no_ktp": no_ktp,
                 "telepon": telepon,
                 "email": email,
                 "alamat": alamat,
@@ -89,6 +96,7 @@
                 let post = `
                     <tr id="index_${response.data.id}">
                         <td>${response.data.nama}</td>
+                        <td>${response.data.no_ktp}</td>
                         <td>${response.data.telepon}</td>
                         <td>${response.data.email}</td>
                         <td>${response.data.alamat}</td>
@@ -104,6 +112,7 @@
                 
                 //clear form
                 $('#nama').val('');
+                $('#no_ktp').val('');
                 $('#telepon').val('');
                 $('#email').val('');
                 $('#alamat').val('');
@@ -123,6 +132,15 @@
 
                     //add message to alert
                     $('#alert-nama').html(error.responseJSON.nama[0]);
+                } 
+                if(error.responseJSON.nama[0]) {
+
+                    //show alert
+                    $('#alert-ktp').removeClass('d-none');
+                    $('#alert-ktp').addClass('d-block');
+
+                    //add message to alert
+                    $('#alert-ktp').html(error.responseJSON.no_ktp[0]);
                 } 
 
                 if(error.responseJSON.telepon[0]) {
